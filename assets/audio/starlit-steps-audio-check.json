@@ -1,0 +1,21 @@
+{
+  "title": "星光轻步 / Starlit Steps",
+  "file": "E:\\360MoveData\\Users\\25348\\Desktop\\小白3D大世界-assets\\starlit-steps-original-loop.wav",
+  "source": "Original mathematical synthesis; no third-party samples or recordings",
+  "license": "CC0-1.0 to the extent permitted by applicable law",
+  "sampleRate": 44100,
+  "channels": 2,
+  "bitsPerSample": 16,
+  "bpm": 128,
+  "bars": 16,
+  "durationSeconds": 30,
+  "frames": 1323000,
+  "bytes": 5292044,
+  "peakAmplitude": 0.31622314453125,
+  "peakDbFS": -10.000126940172311,
+  "rmsDbFS": -24.214536408599304,
+  "clippedSamples": 0,
+  "seamJumpAmplitude": 0.005462646484375,
+  "maxAdjacentSampleStepAmplitude": 0.035308837890625,
+  "loopMethod": "Circular voice tails and circular stereo ambience; no fade-to-silence gap"
+}
