@@ -9,8 +9,10 @@
   <link rel="icon" href="assets/images/avatar.webp">
   <link rel="stylesheet" href="assets/css/world.css">
   <script defer src="assets/js/data.js"></script>
+  <script defer src="assets/js/catalog.js"></script>
   <script defer src="assets/lib/three-bundle.js"></script>
   <script defer src="assets/js/world.js"></script>
+  <script defer src="assets/js/shell.js"></script>
   <script defer src="assets/js/app.js"></script>
 </head>
 <body>
@@ -20,25 +22,158 @@
     <div class="scene-shade" aria-hidden="true"></div>
     <div id="world-labels" aria-label="世界中的展厅"></div>
     <header class="topbar">
-      <a class="brand" href="#home" data-portal="home" aria-label="小白大世界首页"><span class="brand-orbit" aria-hidden="true">✦</span><span>小白<span class="brand-light">大世界</span><small>每一份喜欢，都在发光</small></span></a>
-      <nav class="portal-nav" aria-label="传送到"><button class="active" data-portal="home">首页</button><button data-portal="works">作品</button><button data-portal="videos">视频墙</button><button data-portal="about">关于小白</button><button data-portal="follow">关注</button></nav>
-      <div class="top-actions"><button class="icon-button" id="search-open" aria-label="搜索作品" title="搜索作品"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></button><button class="icon-button" id="theme-toggle" aria-label="切换到白天" title="切换到白天"><span aria-hidden="true">☼</span></button><button class="icon-button music-button" id="music-toggle" aria-label="开启音乐" aria-pressed="false" title="开启音乐"><span class="equalizer" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button></div>
+      <a class="brand" href="#home" data-portal="home" aria-label="小白大世界首页">
+        <span class="brand-orbit" aria-hidden="true">✦</span>
+        <span>小白<span class="brand-light">大世界</span><small>每一份喜欢，都在发光</small></span>
+      </a>
+      <nav class="portal-nav" aria-label="传送到">
+        <button type="button" class="active" data-portal="home" aria-current="location">首页</button>
+        <button type="button" data-portal="works">作品</button>
+        <button type="button" data-portal="videos">视频墙</button>
+        <button type="button" data-portal="about">关于小白</button>
+        <button type="button" data-portal="follow">关注</button>
+      </nav>
+      <div class="top-actions">
+        <button class="icon-button" id="search-open" type="button" aria-label="搜索作品" title="搜索作品">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+        </button>
+        <button class="icon-button" id="theme-toggle" type="button" aria-label="切换到白天" title="切换到白天"><span aria-hidden="true">☼</span></button>
+        <button class="icon-button music-button" id="music-toggle" type="button" aria-label="开启音乐" aria-pressed="false" title="开启音乐">
+          <span class="equalizer" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        </button>
+      </div>
     </header>
-    <section class="intro" aria-labelledby="world-title"><div class="eyebrow"><span class="live-dot"></span> 小白的私人星球 <span class="tiny-star">✧</span></div><h1 id="world-title">把喜欢，<br>放进<span>大世界。</span></h1><p>娃娃、日常，还有一点点奇思妙想。<br>欢迎来我的星球逛一逛。</p><button class="primary-button" id="explore" data-portal="featured">去逛精选岛 <span>↗</span></button><div class="creator-mini"><img src="assets/images/avatar.webp" alt="小白超白的头像"><span>星球主人 <strong>小白超白的</strong></span><span class="mini-heart" aria-hidden="true">♡</span></div></section>
-    <div class="location-badge"><span class="live-dot"></span><span id="location-name">中央星球</span><span class="location-divider"></span><span id="theme-name">夜间霓虹秀</span></div>
-    <aside class="world-stats" aria-label="展馆作品数量"><span><b>74</b>份喜欢</span><span><b>03</b>座作品岛</span></aside>
-    <div class="view-tools" aria-label="视角控制"><button class="icon-button" id="zoom-in" aria-label="放大视角" title="放大">＋</button><button class="icon-button" id="zoom-out" aria-label="缩小视角" title="缩小">−</button><button class="icon-button" data-portal="home" aria-label="回到中央星球" title="回到中央星球">⌂</button><button class="icon-button" id="gyro-toggle" aria-label="开启手机感应视角" aria-pressed="false" title="手机感应视角" hidden>◎</button><button class="icon-button" id="motion-toggle" aria-label="暂停自动动画" aria-pressed="false" title="暂停自动动画">Ⅱ</button></div>
-    <footer class="world-footer"><div class="control-hint"><span aria-hidden="true">↔</span><span>拖动探索 · 滚轮缩放 · 点击作品</span></div><div class="island-dock" aria-label="作品岛传送门"><button data-portal="featured"><span class="dock-symbol pink">✧</span><span>精选岛<small>小白的心头好</small></span><span class="dock-arrow">↗</span></button><button data-portal="works"><span class="dock-symbol rose">♡</span><span>小红书岛<small>32 件作品</small></span><span class="dock-arrow">↗</span></button><button data-portal="videos"><span class="dock-symbol blue">▷</span><span>B 站岛<small>42 条视频</small></span><span class="dock-arrow">↗</span></button></div><button id="gallery-open" class="text-button">作品列表 <span>↗</span></button></footer>
-    <div id="loading" role="status"><span class="loading-orbit" aria-hidden="true">✦</span><p>正在点亮小白的星球</p><small>把每一份喜欢放到它的位置</small></div>
+    <section class="intro" aria-labelledby="world-title">
+      <div class="eyebrow"><span class="live-dot"></span> 小白的私人星球 <span class="tiny-star">✧</span></div>
+      <h1 id="world-title">把喜欢，<br>放进<span>大世界。</span></h1>
+      <p>娃娃、日常，还有一点点奇思妙想。<br>欢迎来我的星球逛一逛。</p>
+      <button class="primary-button" id="explore" type="button" data-portal="featured">去逛精选岛 <span>↗</span></button>
+      <div class="intro-chips" id="intro-chips" aria-label="按分类逛"></div>
+      <div class="creator-mini">
+        <img src="assets/images/avatar.webp" alt="小白超白的头像">
+        <span>星球主人 <strong>小白超白的</strong></span>
+        <span class="mini-heart" aria-hidden="true">♡</span>
+      </div>
+    </section>
+    <div class="location-badge">
+      <span class="live-dot"></span>
+      <span id="location-name">中央星球</span>
+      <span class="location-divider"></span>
+      <span id="theme-name">夜间霓虹秀</span>
+    </div>
+    <aside class="world-stats" aria-label="展馆作品数量">
+      <span><b id="stat-total">74</b>份喜欢</span>
+      <span><b id="stat-islands">03</b>座作品岛</span>
+    </aside>
+    <nav class="radar" id="radar" aria-label="星球地图">
+      <button class="radar-node is-core active" type="button" data-portal="home" style="--x:50%;--y:42%" aria-label="中央星球" aria-current="location">✦</button>
+      <button class="radar-node is-small" type="button" data-portal="about" style="--x:22%;--y:28%" aria-label="关于小白">我</button>
+      <button class="radar-node is-small" type="button" data-portal="follow" style="--x:78%;--y:28%" aria-label="关注小白">注</button>
+      <button class="radar-node" type="button" data-portal="works" style="--x:28%;--y:68%" aria-label="小红书岛">红</button>
+      <button class="radar-node" type="button" data-portal="videos" style="--x:72%;--y:68%" aria-label="B站岛">视</button>
+      <button class="radar-node" type="button" data-portal="featured" style="--x:50%;--y:80%" aria-label="精选岛">选</button>
+    </nav>
+    <div class="view-tools" aria-label="视角控制">
+      <button class="icon-button" id="zoom-in" type="button" aria-label="放大视角" title="放大">＋</button>
+      <button class="icon-button" id="zoom-out" type="button" aria-label="缩小视角" title="缩小">−</button>
+      <button class="icon-button" type="button" data-portal="home" aria-label="回到中央星球" title="回到中央星球">⌂</button>
+      <button class="icon-button" id="gyro-toggle" type="button" aria-label="开启手机感应视角" aria-pressed="false" title="手机感应视角" hidden>◎</button>
+      <button class="icon-button" id="motion-toggle" type="button" aria-label="暂停自动动画" aria-pressed="false" title="暂停自动动画">Ⅱ</button>
+    </div>
+    <footer class="world-footer">
+      <div class="control-hint"><span aria-hidden="true">↔</span><span>拖动探索 · 滚轮缩放 · 点击作品</span></div>
+      <div class="island-dock" aria-label="作品岛传送门">
+        <button type="button" data-portal="featured"><span class="dock-symbol pink">✧</span><span>精选岛<small>小白的心头好</small></span><span class="dock-arrow">↗</span></button>
+        <button type="button" data-portal="works"><span class="dock-symbol rose">♡</span><span>小红书岛<small id="dock-works">32 件作品</small></span><span class="dock-arrow">↗</span></button>
+        <button type="button" data-portal="videos"><span class="dock-symbol blue">▷</span><span>B 站岛<small id="dock-videos">42 条视频</small></span><span class="dock-arrow">↗</span></button>
+      </div>
+      <div class="footer-links">
+        <button id="gallery-open" class="text-button" type="button">作品列表 <span>↗</span></button>
+        <a class="text-button" href="index.legacy.html">上一版</a>
+      </div>
+    </footer>
+    <div id="loading" role="status">
+      <span class="loading-orbit" aria-hidden="true">✦</span>
+      <p>正在点亮小白的星球</p>
+      <small>把每一份喜欢放到它的位置</small>
+    </div>
     <p id="toast" class="toast" role="status" aria-live="polite"></p>
     <div id="hover-card" hidden></div>
   </main>
-  <section id="fallback" hidden><div class="fallback-intro"><span class="eyebrow">小白的作品展馆</span><h1>每一份喜欢，<br>都在这里发光。</h1><p id="fallback-reason">当前以轻量模式浏览，所有作品都在。</p><button id="retry-3d" class="primary-button">重新进入 3D 世界 ↗</button><div class="fallback-links"><button data-portal="about">关于小白 ↗</button><button data-portal="follow">关注小白 ↗</button></div></div></section>
-  <dialog id="search-dialog" class="search-dialog"><div class="dialog-top"><h2>找一份喜欢</h2><button data-close class="icon-button" aria-label="关闭搜索">×</button></div><label class="search-field"><span aria-hidden="true">⌕</span><input id="search-input" type="search" placeholder="搜索娃娃、GBC、chiikawa…" autocomplete="off" aria-label="搜索作品关键词"><kbd>Esc</kbd></label><div id="search-results" aria-live="polite"></div></dialog>
-  <dialog id="detail-dialog" class="detail-dialog"><button data-close class="icon-button floating-close" aria-label="关闭作品详情">×</button><div class="detail-cover"><img id="detail-image" alt=""></div><div class="detail-copy"><div class="eyebrow" id="detail-platform"></div><h2 id="detail-title"></h2><div id="detail-meta" class="detail-meta"></div><p id="detail-category" class="category-pill"></p><a id="detail-link" class="primary-button" target="_blank" rel="noopener noreferrer">打开原作品 <span>↗</span></a><p class="source-note">播放与互动在原平台继续</p></div></dialog>
-  <dialog id="about-dialog" class="profile-dialog"><div class="dialog-top"><span class="eyebrow">星球主人</span><button data-close class="icon-button" aria-label="关闭关于小白">×</button></div><img class="profile-avatar" src="assets/images/avatar.webp" alt="小白超白的头像"><h2>你好，我是小白<span>💗</span></h2><p class="profile-bio">小白的二次元日常～<br>喜欢粉色的小可爱们！！！<br>嘿嘿💗💗💗</p><div class="profile-tags"><span>娃娃开箱</span><span>测评分享</span><span>GBC</span><span>chiikawa</span></div><p class="profile-cheer">加油加油～</p><button class="primary-button" data-portal="follow">去我的主页坐坐 <span>↗</span></button></dialog>
-  <dialog id="follow-dialog" class="profile-dialog"><div class="dialog-top"><span class="eyebrow">下一站，继续一起玩</span><button data-close class="icon-button" aria-label="关闭关注主页">×</button></div><h2>在这里找到小白<span>✧</span></h2><a id="xhs-profile" class="follow-card" target="_blank" rel="noopener noreferrer"><span class="platform-logo rose">小红书</span><div><b>小白超白的</b><p>粉丝 1千+ · 获赞与收藏 1万+</p><small>小红书号 888313077</small></div><span>↗</span></a><a id="bili-profile" class="follow-card" target="_blank" rel="noopener noreferrer"><span class="platform-logo blue">B 站</span><div><b>小白超白的-</b><p>粉丝 2,518 · 获赞 13.5万</p><small>累计播放 163.9万</small></div><span>↗</span></a><p class="source-note">数据来自本次整理的个人主页快照</p></dialog>
-  <dialog id="gallery-dialog" class="gallery-dialog"><div id="gallery"><div class="dialog-top"><div><span class="eyebrow">小白的收藏宇宙</span><h2>74 份喜欢，慢慢看。</h2></div><button data-close class="icon-button" aria-label="关闭作品列表">×</button></div><div class="gallery-filters" aria-label="作品筛选"><button class="active" data-filter="all">全部 74</button><button data-filter="xhs">小红书 32</button><button data-filter="bili">B 站 42</button></div><div id="gallery-grid" class="gallery-grid"></div></div></dialog>
+  <section id="fallback" hidden>
+    <div class="fallback-intro">
+      <span class="eyebrow">小白的作品展馆</span>
+      <h1>每一份喜欢，<br>都在这里发光。</h1>
+      <p id="fallback-reason">当前以轻量模式浏览，所有作品都在。</p>
+      <button id="retry-3d" class="primary-button" type="button">重新进入 3D 世界 ↗</button>
+      <div class="fallback-links">
+        <button type="button" data-portal="about">关于小白 ↗</button>
+        <button type="button" data-portal="follow">关注小白 ↗</button>
+      </div>
+    </div>
+  </section>
+  <dialog id="search-dialog" class="search-dialog">
+    <div class="dialog-top"><h2>找一份喜欢</h2><button data-close class="icon-button" type="button" aria-label="关闭搜索">×</button></div>
+    <label class="search-field">
+      <span aria-hidden="true">⌕</span>
+      <input id="search-input" type="search" placeholder="搜索娃娃、GBC、chiikawa…" autocomplete="off" aria-label="搜索作品关键词">
+      <kbd>Esc</kbd>
+    </label>
+    <div id="search-results" aria-live="polite"></div>
+  </dialog>
+  <dialog id="detail-dialog" class="detail-dialog">
+    <button data-close class="icon-button floating-close" type="button" aria-label="关闭作品详情">×</button>
+    <div class="detail-cover"><img id="detail-image" alt=""></div>
+    <div class="detail-copy">
+      <div class="eyebrow" id="detail-platform"></div>
+      <h2 id="detail-title"></h2>
+      <div id="detail-meta" class="detail-meta"></div>
+      <p id="detail-featured" class="featured-flag" hidden>精选</p>
+      <p id="detail-category" class="category-pill"></p>
+      <div class="detail-nav">
+        <button id="detail-prev" type="button" aria-label="上一件">‹</button>
+        <span id="detail-index"></span>
+        <button id="detail-next" type="button" aria-label="下一件">›</button>
+      </div>
+      <a id="detail-link" class="primary-button" target="_blank" rel="noopener noreferrer">打开原作品 <span>↗</span></a>
+      <button id="detail-locate" class="text-button" type="button">在星球中看</button>
+      <p class="source-note">播放与互动在原平台继续</p>
+    </div>
+  </dialog>
+  <dialog id="about-dialog" class="profile-dialog">
+    <div class="dialog-top"><span class="eyebrow">星球主人</span><button data-close class="icon-button" type="button" aria-label="关闭关于小白">×</button></div>
+    <img class="profile-avatar" src="assets/images/avatar.webp" alt="小白超白的头像">
+    <h2>你好，我是小白<span>💗</span></h2>
+    <p class="profile-bio">小白的二次元日常～<br>喜欢粉色的小可爱们！！！<br>嘿嘿💗💗💗</p>
+    <div class="profile-tags" id="about-tags"></div>
+    <p class="profile-cheer">加油加油～</p>
+    <button class="primary-button" type="button" data-portal="follow">去我的主页坐坐 <span>↗</span></button>
+  </dialog>
+  <dialog id="follow-dialog" class="profile-dialog">
+    <div class="dialog-top"><span class="eyebrow">下一站，继续一起玩</span><button data-close class="icon-button" type="button" aria-label="关闭关注主页">×</button></div>
+    <h2>在这里找到小白<span>✧</span></h2>
+    <a id="xhs-profile" class="follow-card" target="_blank" rel="noopener noreferrer">
+      <img class="follow-avatar" src="assets/images/avatar.webp" alt="">
+      <div><b>小白超白的</b><p>小红书 · 粉丝 1千+ · 获赞与收藏 1万+</p><small>小红书号 888313077</small></div>
+      <span>↗</span>
+    </a>
+    <a id="bili-profile" class="follow-card" target="_blank" rel="noopener noreferrer">
+      <img class="follow-avatar" src="assets/images/bili-avatar.webp" alt="">
+      <div><b>小白超白的-</b><p>B 站 · 粉丝 2,518 · 获赞 13.5万</p><small>累计播放 163.9万</small></div>
+      <span>↗</span>
+    </a>
+    <p class="source-note">数据来自本次整理的个人主页快照</p>
+  </dialog>
+  <dialog id="gallery-dialog" class="gallery-dialog">
+    <div id="gallery">
+      <div class="dialog-top">
+        <div><span class="eyebrow">小白的收藏宇宙</span><h2 id="gallery-title">74 份喜欢，慢慢看。</h2></div>
+        <button data-close class="icon-button" type="button" aria-label="关闭作品列表">×</button>
+      </div>
+      <div class="gallery-filters" id="gallery-filters" aria-label="作品筛选"></div>
+      <div id="gallery-grid" class="gallery-grid"></div>
+    </div>
+  </dialog>
   <noscript><p class="noscript-note">请启用 JavaScript 进入展馆，或直接前往 <a href="https://www.xiaohongshu.com/user/profile/5f76dc35000000000101da07">小红书主页</a>、<a href="https://space.bilibili.com/443143319">B 站主页</a> 查看作品。</p></noscript>
 </body>
 </html>
